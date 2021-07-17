@@ -1,6 +1,6 @@
 - hosts: sandbox #no communication with remote system for this playbook 
   tasks:  
- 
+  
    
   - name: Install aptitude using apt
     become: yes    
@@ -46,9 +46,31 @@
       dest: /usr/local/bin/docker-compose
       mode: 'u+x,g+x'
 
+  - name: Install Curl 
+    become: yes    
+    become_user: root
+    apt:
+      name: curl   
+
+  - name: Install Zip 
+    become: yes    
+    become_user: root
+    apt:
+      name: zip  
+
+  - name: install K3s - Lightweight Kubernetes 
+    ansible.builtin.shell:
+      cmd: curl -sfL https://get.k3s.io | sh -
+
   - name: Create a jenkins_home directory if it does not exist
     ansible.builtin.file:
       path: /home/ubuntu/jenkins_home
+      state: directory
+      mode: '0755'
+
+  - name: Create a directory to store jenkins server backups
+    ansible.builtin.file:
+      path: /home/ubuntu/jenkins_backup
       state: directory
       mode: '0755'
 
