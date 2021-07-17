@@ -1,7 +1,7 @@
 import './sidebar.css'
 
 export default function Sidebar() {
-    const imgUrl =  "https://cdn.vox-cdn.com/thumbor/K1WKyMb31K-K1vvseGAyFsjfYYE=/0x0:1200x675/1200x800/filters:focal(478x31:670x223)/cdn.vox-cdn.com/uploads/chorus_image/image/60384393/0_c9S8ajFBpwX89ZuU.0.jpeg"
+    const imgUrl = "https://static.metacritic.com/images/products/movies/9/527182c55c79758fafe05160ee80f6fb.jpg"
 
     return (
         
