@@ -14,6 +14,7 @@ job('Si3mshady BLOG site' ) {
                 echo "Setting up build environment!"
                 apt update && apt install git -y && apt install make -y 
                 apt install python3-pip -y &&  pip3 install awscli  && apt install curl -y
+                apt install node -y
                                
                   
         ''')
@@ -21,6 +22,8 @@ job('Si3mshady BLOG site' ) {
           shell('''
                 
                 ls .
+
+                npm build
                             
         ''')
 
