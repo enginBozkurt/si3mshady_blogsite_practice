@@ -47,8 +47,8 @@ pipeline {
                 steps {
                     sh '''
                        apt update && apt install -y;
-                        git checkout main; 
-                        git merge origin/dev;
+                    git checkout main & git merge origin/dev; 
+                       
                     '''
                 }
             }
