@@ -21,7 +21,7 @@ pipeline {
              steps {
                      sshagent(credentials: ['alquimista']) {
                 sh '''             
-                    ssh -tt alquimista@ec2-3-225-222-165.compute-1.amazonaws.com
+                    ssh -tt alquimista@ec2-3-225-222-165.compute-1.amazonaws.com 
                 '''
           }
       }
