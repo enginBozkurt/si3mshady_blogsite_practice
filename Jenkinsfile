@@ -12,7 +12,6 @@ pipeline {
                    git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git || true && echo '-1';             
             '''                     
           }
-
             }
         }
 
