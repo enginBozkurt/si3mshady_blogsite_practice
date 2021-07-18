@@ -10,8 +10,8 @@ pipeline {
                     apt install python3-pip -y &&  pip3 install awscli &&
                     apt install nodejs -y && apt install npm -y  &&     
                     apt install ansible -y  
-
-                    ls .          
+                    pwd
+                    ls .  
                 '''
             }
         }
@@ -20,7 +20,8 @@ pipeline {
           stage('test ssh') {
              steps {
                      sshagent(credentials: ['alquimista']) {
-                sh '''             
+                sh '''      
+                        
                     ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com mkdir /home/alquimista/scratch1 || true && echo "-1"
                      scp  -t -o StrictHostKeyChecking=no -c Jenkinsfile alquimista@ec2-3-225-222-165.compute-1.amazonaws.com:/home/alquimista/Jenkinsfile
                 
