@@ -8,8 +8,7 @@ pipeline {
                     rm -rf si3mshady_blogsite_practice || true && echo "-1" &&                   
                     apt update && apt install git -y && apt install make -y &&
                     apt install curl -y && apt install tee -y  && apt install wget -y &&
-                    wget -qO - https://raw.githubusercontent.com/yarnpkg/releases/gh-pages/debian/pubkey.gpg | apt-key add &&
-                  
+                    curl -o- -L https://yarnpkg.com/install.sh | bash &&
                     apt update &&  apt install nodejs -y && apt install npm -y  && apt install yarn -y &&                         
 
                     yarn install  && yarn build;
