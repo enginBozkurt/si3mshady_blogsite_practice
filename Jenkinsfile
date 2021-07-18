@@ -25,8 +25,7 @@ pipeline {
             steps {
                  sh '''
                  git checkout main & git merge origin/dev; 
-                 git add . && git commit -m "successful merge";
-                 git push -u origin main ;                
+                     
                '''
             }
         }
