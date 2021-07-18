@@ -21,7 +21,7 @@ pipeline {
                     sshagent(credentials: ['alquimista']) {
             sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
                 alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
-                npm install si3mshady_blogsite_practice/ 
+                cd si3mshady_blogsite_practice/ &&  npm install
             '''             
 
         }
@@ -34,7 +34,7 @@ pipeline {
                     sshagent(credentials: ['alquimista']) {
             sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
                 alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
-                npm run build si3mshady_blogsite_practice/
+                npm run build si3mshady_blogsite_practice/*json
             '''             
 
         }
