@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-    stage('Build artifact') {
+    stage('Install dependencies') {
             steps {
                     sshagent(credentials: ['alquimista']) {
             sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
@@ -53,7 +53,7 @@ pipeline {
         }
 
 
-        stage('Test Build Directory Exists') {
+        stage('Merge Branches') {
                 steps {
                     sh '''
                         apt update && apt install -y;
