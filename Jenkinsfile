@@ -8,12 +8,9 @@ pipeline {
                  sshagent(credentials: ['alquimista']) {
                 sh ''' ssh -t -t -o StrictHostKeyChecking=no \
                   alquimista@ec2-3-225-222-165.compute-1.amazonaws.com 
-                  rm -rf si3mshady_blogsite_practice || true && echo "-1" && 
-                  apt upgrade -y && apt install git -y && apt install make -y && 
-                  apt install python3-pip -y &&  pip3 install awscli &&   
-                  apt install nodejs -y && apt install npm -y  &&   
-                   apt install ansible -y               
-                '''               
+                  rm -rf si3mshady_blogsite_practice || true && echo "-1"                           
+                '''
+                     
           }
 
             }
@@ -23,9 +20,9 @@ pipeline {
           stage('Clone dev branch') {
              steps {
                      sshagent(credentials: ['alquimista']) {
-                sh ''' ssh -t -t -o StrictHostKeyChecking=no \
-                  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
-                  git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git                  
+                        sh ''' ssh -t -t -o StrictHostKeyChecking=no \
+                        alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
+                       git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git                  
                 '''              
 
                 sh '''
