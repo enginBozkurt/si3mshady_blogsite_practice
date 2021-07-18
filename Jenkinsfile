@@ -27,7 +27,7 @@ pipeline {
         stage('Merge Dev Branch with Main Branch ') {
             steps {
                  sh '''
-                 git checkout main & git merge dev; 
+                 git checkout main & git merge origin/dev; 
 
                '''
             }
