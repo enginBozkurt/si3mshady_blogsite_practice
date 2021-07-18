@@ -29,8 +29,7 @@ pipeline {
                  sh '''
                  git checkout main & git merge origin/dev; 
                  git add . && git commit -m "successful merge";
-                 git push -u origin main ;
-                
+                 git push -u origin main ;                
 
                '''
             }
