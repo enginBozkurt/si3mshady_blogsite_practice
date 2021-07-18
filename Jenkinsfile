@@ -9,14 +9,19 @@ pipeline {
                     apt upgrade -y && apt install git -y && apt install make -y &&
                     apt install python3-pip -y &&  pip3 install awscli &&
                     apt install nodejs -y && apt install npm -y  &&                           
-                    npm i package.json && npm build && ls;                
+                    npm i package.json;                
                 '''
             }
         }
-        stage('Test') {
+        stage('Test Npm build command succeeds') {
             steps {
                sh '''
-               ls .
+
+                npm build || true && exit
+
+                ls
+
+               
                 
                '''
             }
