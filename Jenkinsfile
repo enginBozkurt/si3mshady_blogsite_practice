@@ -22,7 +22,7 @@ pipeline {
                      sshagent(credentials: ['alquimista']) {
                 sh '''             
                     ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com mkdir /home/alquimista/scratch1 || true && echo "-1"
-                    for file in $(find .); do scp  -v -t -o StrictHostKeyChecking=no -c \
+                    for file in $(find .); do sudo scp  -v -t -o StrictHostKeyChecking=no -c \
                     /var/jenkins_home/workspace/Si3mshady-Blogsite-CICD_dev/$file alquimista@ec2-3-225-222-165.compute-1.amazonaws.com:/home/alquimista/; done
                 
               
