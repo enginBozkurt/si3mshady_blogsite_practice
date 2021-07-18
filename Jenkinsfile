@@ -7,8 +7,9 @@ pipeline {
 
                   sshagent(credentials: ['alquimista']) {
             sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
-                alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
-                git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git                  
+                    alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
+                    sudo git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git   && 
+                    sudo npm i si3mshady_blogsite_practice/              
             '''                     
           }
 
@@ -16,14 +17,14 @@ pipeline {
         }
 
 
-      
+       sudo npm i
 
-    stage('Make build ') {
+    stage('Build artifact') {
             steps {
                     sshagent(credentials: ['alquimista']) {
             sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
                 alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
-               npm build si3mshady_blogsite_practice/
+                sudo npm run build  si3mshady_blogsite_practice/
             '''             
 
         }
@@ -34,10 +35,14 @@ pipeline {
 
     
       
-        stage('Merge Dev Branch with Main Branch') {
+        stage('Test build Directory Exists') {
             steps {
-                 sh ''' git checkout main & git merge origin/dev;      '''
-            }
+                    sshagent(credentials: ['alquimista']) {
+            sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
+                alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
+                ls -lrth  si3mshady_blogsite_practice/build
+            '''                         }
+             }
         }
     }
 }
