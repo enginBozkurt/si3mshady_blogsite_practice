@@ -11,26 +11,24 @@ pipeline {
                     apt install nodejs -y && apt install npm -y  &&       
                     git clone https://github.com/si3mshady/si3mshady_blogsite_practice
                     cd si3mshady_blogsite_practice; 
-                    npm i package.json && npm build;
+                    npm i package.json;
 
                 '''
             }
         }
-        stage('Test') {
+        stage('Test build directory exists') {
             steps {
                sh '''
-                 pwd 
-
+                 ls -lrth build/
                '''
             }
         }
         stage('Merge Dev Branch with Main Branch ') {
             steps {
                  sh '''
-                 git checkout main & git pull --rebase origin/main;           
-                 git add . && git commit -m "updating from pipeline";                 
-                 git merge origin/dev;                  
-                 echo "success!"
+                 git checkout main & git  git merge origin/dev;             
+                 echo "good for the moment"
+                 
                '''
             }
         }
