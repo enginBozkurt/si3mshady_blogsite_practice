@@ -19,7 +19,8 @@ pipeline {
         stage('Test build directory exists') {
             steps {
                sh '''
-                 ls -lrth build/
+                 pwd
+                 ls -lrth .
                '''
             }
         }
