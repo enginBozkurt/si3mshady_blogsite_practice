@@ -9,7 +9,9 @@ pipeline {
                     apt upgrade -y && apt install git -y && apt install make -y &&
                     apt install python3-pip -y &&  pip3 install awscli &&
                     apt install nodejs -y && apt install npm -y  &&     
-                    apt install ansible -y &&   npm i package.json;                
+                    apt install ansible -y &&   npm i package.json;   
+
+                    ls .          
                 '''
             }
         }
