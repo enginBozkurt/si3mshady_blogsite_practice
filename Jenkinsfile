@@ -2,32 +2,57 @@ pipeline {
     agent any
 
     stages {
-        stage('Build React Env') {
+
+        stage('Clone Dev Branch') {
             steps {
-                  sh '''
-                    rm -rf si3mshady_blogsite_practice || true && echo "-1" &&   
-                    apt upgrade -y && apt install git -y && apt install make -y &&
-                    apt install python3-pip -y &&  pip3 install awscli  && apt install curl -y &&
-                    apt install nodejs -y && apt install npm -y  &&                           
-                    npm i package.json && npm build && ls;
-                '''
+
+                  sshagent(credentials: ['alquimista']) {
+            sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
+                    alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
+                   git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git || true && echo '-1';             
+            '''                     
+          }
             }
         }
-        stage('Test') {
+
+    stage('Install dependencies') {
             steps {
-               sh '''
-                 pwd 
-               '''
-            }
+                    sshagent(credentials: ['alquimista']) {
+            sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
+                alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
+                cd si3mshady_blogsite_practice/ &&  npm install 
+            '''             
+
         }
-        stage('Merge Dev Branch with Main Branch ') {
+    }
+    }
+
+   
+    stage('Test / Build artifact') {
             steps {
-                 sh '''
-                 git checkout main & git merge origin/dev;                          
-                 echo "it worked"
-                     
-               '''
-            }
+                    sshagent(credentials: ['alquimista']) {
+            sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
+                alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
+                 cd si3mshady_blogsite_practice/ &&   npm run build ./package.json
+            '''             
+
         }
+    }
+    }
+    
+
+
+        stage('Merge Branches') {
+                steps {
+                    sh '''
+                       apt update && apt install -y;
+                    git checkout main & git merge origin/dev; 
+                       
+                    '''
+                }
+            }
+
+
+
     }
 }
