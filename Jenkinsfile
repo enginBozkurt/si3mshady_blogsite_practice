@@ -10,9 +10,9 @@ pipeline {
                     apt install curl -y && apt install tee -y  &&  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;
 
                     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;                              
-                    apt install nodejs -y && apt install npm -y  && apt install yarn -y &&   apt update && apt install yarn;                          
+                    apt install nodejs -y && apt install npm -y  && apt install yarn -y &&   apt update;                         
 
-                    yarn install  && yarn build
+                    yarn install  && yarn build;
 
                 '''
             }
@@ -29,8 +29,7 @@ pipeline {
             steps {
                  sh '''
                  git checkout main & git  git merge origin/dev;             
-                 echo "good for the moment"
-                 
+                 echo "good for the moment"                 
                '''
             }
         }
