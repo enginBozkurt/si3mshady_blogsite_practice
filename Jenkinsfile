@@ -22,7 +22,7 @@ pipeline {
                '''
             }
         }
-        stage('Merge Dev Branch with Main Branch ') {
+        stage('Merge Dev Branch with Main Branch') {
             steps {
                  sh '''
                  ls ./
