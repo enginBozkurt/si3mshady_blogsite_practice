@@ -29,7 +29,6 @@ pipeline {
                  sh '''
                  git checkout main & git merge origin/dev; 
                  git add . && git commit -m "successful merge";
-                 git remote set-url origin git@github.com:si3mshady/si3mshady_blogsite_practice.git || true && echo "1";
                  git push -u origin main ;
                 
 
