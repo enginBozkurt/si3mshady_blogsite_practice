@@ -15,9 +15,7 @@ pipeline {
             }
         }
 
-
-       sudo npm i
-
+   
     stage('Build artifact') {
             steps {
                     sshagent(credentials: ['alquimista']) {
