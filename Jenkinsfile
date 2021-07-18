@@ -17,7 +17,7 @@ pipeline {
         }
 
 
-          stage('test ssh') {
+          stage('test ssh connection') {
              steps {
                      sshagent(credentials: ['alquimista']) {
                 sh '''             
