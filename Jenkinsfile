@@ -21,7 +21,7 @@ pipeline {
              steps {
                      sshagent(credentials: ['alquimista']) {
                 sh '''             
-                    ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com sudo docker ps 
+                    ssh -t -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com sudo docker ps 
                    
                 '''
           }
