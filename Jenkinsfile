@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Dev Branch ') {
+        stage('Clone Dev Branch') {
             steps {
 
                   sshagent(credentials: ['alquimista']) {
@@ -29,7 +29,7 @@ pipeline {
     }
     
       
-        stage('Test build Directory Exists') {
+        stage('Test Build Directory Exists') {
             steps {
                     sshagent(credentials: ['alquimista']) {
             sh ''' ssh -v -t -t -o StrictHostKeyChecking=no \
