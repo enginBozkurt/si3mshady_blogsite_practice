@@ -9,7 +9,7 @@ pipeline {
                     apt upgrade -y && apt install git -y && apt install make -y &&
                     apt install python3-pip -y &&  pip3 install awscli &&
                     apt install nodejs -y && apt install npm -y  &&     
-                    apt install ansible -y &&   npm i package.json;   
+                    apt install ansible -y  
 
                     ls .          
                 '''
@@ -21,7 +21,7 @@ pipeline {
              steps {
                      sshagent(credentials: ['alquimista']) {
                 sh '''             
-                    ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com mkdir /home/alquimista/scratch || true && echo "-1"
+                    ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com mkdir /home/alquimista/scratch1 || true && echo "-1"
                     
                     for file in $(find .); do scp  -t -o StrictHostKeyChecking=no -c $file alquimista@ec2-3-225-222-165.compute-1.amazonaws.com:/home/alquimista/; done
                 
