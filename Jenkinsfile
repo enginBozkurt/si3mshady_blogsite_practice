@@ -20,10 +20,10 @@ pipeline {
           stage('test ssh connection') {
              steps {
                      sshagent(credentials: ['alquimista']) {
-                sh '''             
-                  ssh -t -t -o StrictHostKeyChecking=no \
+                sh ''' ssh -t -t -o StrictHostKeyChecking=no \
                   alquimista@ec2-3-225-222-165.compute-1.amazonaws.com \
-                  git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git
+                  git clone --branch dev https://github.com/si3mshady/si3mshady_blogsite_practice.git && \
+                  cd si3mshady_blogsite_practice/ && npm build && sleep 20
                 '''
           }
       }
