@@ -27,9 +27,6 @@ pipeline {
         }
     }
     }
-
-
-
     
       
         stage('Test build Directory Exists') {
