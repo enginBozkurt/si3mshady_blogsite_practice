@@ -7,10 +7,9 @@ pipeline {
                   sh '''
                     rm -rf si3mshady_blogsite_practice || true && echo "-1";  
                     apt upgrade -y && apt install git -y && apt install make -y;
-                    apt install python3-pip -y &&  pip3 install awscli;
-                    apt install npm -y;
-                    apt install wget -y; 
-                    
+                    apt install python3-pip -y &&  pip3 install awscli;                    
+                    apt install npm -y && npm install -g npm@5.10.0 && 
+                    apt install wget -y;                      
                     wget https://nodejs.org/dist/latest-v8.x/node-v8.17.0-linux-arm64.tar.gz;
                     tar -xzf node-v8.17.0-linux-arm64.tar.gz -C /usr/local;
                     node --version ;                                
