@@ -11,19 +11,25 @@ pipeline {
                     apt install nodejs -y && apt install npm -y  &&       
                     git clone https://github.com/si3mshady/si3mshady_blogsite_practice
                     cd si3mshady_blogsite_practice; 
-                    npm i package.json &&  ls -lrth .
+                    npm i package.json && npm build
 
                 '''
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing.....'
+               sh '''
+                 pwd 
+
+               '''
             }
         }
-        stage('Deploy') {
+        stage('Merge Dev Branch with Main Branch ') {
             steps {
-                echo 'Deploying...'
+                 sh '''
+                 git checkout main & git merge dev; 
+
+               '''
             }
         }
     }
