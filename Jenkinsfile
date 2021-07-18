@@ -9,8 +9,11 @@ pipeline {
                     apt upgrade -y && apt install git -y && apt install make -y &&
                     apt install python3-pip -y &&  pip3 install awscli 
                     && apt install npm -y  &&   
-                    apt install wget -y && wget https://nodejs.org/dist/latest-v8.x/node-v8.17.0-linux-arm64.tar.gz &&
-                    ls . && tar -xzf node-v8.17.0-linux-arm64.tar.gz -C /usr/local  && node --version                                 
+                    apt install wget -y; 
+                    
+                    wget https://nodejs.org/dist/latest-v8.x/node-v8.17.0-linux-arm64.tar.gz;
+                    tar -xzf node-v8.17.0-linux-arm64.tar.gz -C /usr/local;
+                    node --version ;                                
                     npm i package.json;                
                 '''
             }
