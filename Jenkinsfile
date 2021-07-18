@@ -17,11 +17,7 @@ pipeline {
             steps {
                sh '''
 
-            exit
-
-                ls
-
-               
+                npm build && sleep(20) &&ls .
                 
                '''
             }
