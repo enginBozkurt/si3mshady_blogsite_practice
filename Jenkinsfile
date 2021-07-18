@@ -27,8 +27,9 @@ pipeline {
         stage('Merge Dev Branch with Main Branch ') {
             steps {
                  sh '''
-                 git checkout main & git merge origin/dev; 
-                 git pull origin;
+                 git checkout main & git pull origin;               
+                 git add . && git commit -m "updating from pipeline";                 
+                 git merge origin/dev;                  
                  echo "success!"
                '''
             }
