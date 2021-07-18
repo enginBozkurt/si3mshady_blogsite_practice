@@ -19,7 +19,7 @@ pipeline {
 
           stage('test ssh') {
              steps {
-                     sshagent(credentials: ['alquimista']) {
+                     sshagent(['alquimista']) {
                 sh '''
                     touch elliottWashere
                     ssh alquimista@ec2-3-225-222-165.compute-1.amazonaws.com
