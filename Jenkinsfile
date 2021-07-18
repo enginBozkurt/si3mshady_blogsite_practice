@@ -9,7 +9,7 @@ pipeline {
                     apt update && apt install git -y && apt install make -y &&
                     apt install python3-pip -y &&  pip3 install awscli  && apt install curl -y &&
                     apt install nodejs -y && apt install npm -y  &&                         
-                    npm i package.json && npm build && ls;
+                    npm i package.json && npm run-script build || true && npm react-scripts build
 
                 '''
             }
