@@ -25,7 +25,7 @@ pipeline {
                      alquimista@ec2-3-225-222-165.compute-1.amazonaws.com touch pingPong
 
                    scp -t -t -o StrictHostKeyChecking=no \
-                    /var/jenkins_home/workspace/Si3mshady-Blogsite-CICD_dev/Jenkinsfile \
+                    /var/jenkins_home/workspace/Si3mshady-Blogsite-CICD_devJenkinsfile \
                     alquimista@ec2-3-225-222-165.compute-1.amazonaws.com:/home/alquimista
                 '''
           }
