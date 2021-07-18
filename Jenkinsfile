@@ -25,6 +25,7 @@ pipeline {
             steps {
                  sh '''
                  git checkout main & git merge origin/dev; 
+                 echo "it worked"
                      
                '''
             }
