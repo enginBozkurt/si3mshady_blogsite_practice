@@ -21,8 +21,8 @@ pipeline {
              steps {
                      sshagent(credentials: ['alquimista']) {
                 sh '''             
-                    ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com mkdir ~/scratch || true && echo "-1"
-                    scp -t -o StrictHostKeyChecking=no * alquimista@ec2-3-225-222-165.compute-1.amazonaws.com:~/scratch
+                    ssh -t -o StrictHostKeyChecking=no  alquimista@ec2-3-225-222-165.compute-1.amazonaws.com mkdir /home/alquimista/scratch || true && echo "-1"
+                    scp -t -o StrictHostKeyChecking=no * alquimista@ec2-3-225-222-165.compute-1.amazonaws.com:/home/alquimista/scratch
                 
               
                 '''
