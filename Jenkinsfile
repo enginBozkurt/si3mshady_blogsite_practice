@@ -17,7 +17,7 @@ pipeline {
             steps {
                sh '''
 
-                npm build || true && exit
+            exit
 
                 ls
 
