@@ -8,7 +8,7 @@ pipeline {
                  sshagent(credentials: ['alquimista']) {
                 sh ''' ssh -t -t -o StrictHostKeyChecking=no \
                   alquimista@ec2-3-225-222-165.compute-1.amazonaws.com 
-                  rm -rf si3mshady_blogsite_practice || true && echo "-1"                           
+                 sudo rm -rf si3mshady_blogsite_practice || true && echo "-1"                           
                 '''                     
           }
 
