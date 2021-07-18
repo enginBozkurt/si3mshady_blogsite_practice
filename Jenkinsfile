@@ -11,7 +11,7 @@ pipeline {
                     apt install nodejs -y && apt install npm -y  &&       
                     git clone https://github.com/si3mshady/si3mshady_blogsite_practice
                     cd si3mshady_blogsite_practice; 
-                    npm i package.json && npm run build; 
+                    npm i package.json && npm  build; 
 
                 '''
             }
