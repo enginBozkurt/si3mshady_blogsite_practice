@@ -56,7 +56,7 @@ pipeline {
         stage('Merge Branches') {
                 steps {
                     sh '''
-                        apt update && apt install -y;
+                       apt update && apt install -y;
                         git checkout main; 
                         git merger origin/dev;
                     '''
