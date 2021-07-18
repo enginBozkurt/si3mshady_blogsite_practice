@@ -28,8 +28,8 @@ pipeline {
             steps {
                  sh '''
                  git checkout main & git merge origin/dev; 
-                      
-
+                 git pull origin;
+                 echo "success!"
                '''
             }
         }
