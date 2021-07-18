@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                sh '''
-               npm build package.json && ls;
+               ls .
                 
                '''
             }
