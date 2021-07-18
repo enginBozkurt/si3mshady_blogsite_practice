@@ -48,7 +48,7 @@ pipeline {
                     sh '''
                        apt update && apt install -y;
                         git checkout main; 
-                        git merger origin/dev;
+                        git merge origin/dev;
                     '''
                 }
             }
