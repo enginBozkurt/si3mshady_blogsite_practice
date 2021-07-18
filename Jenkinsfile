@@ -18,13 +18,14 @@ pipeline {
         stage('Test Npm build command succeeds') {
             steps {
                sh '''
-                    npm build                 
+                    ls ./             
                '''
             }
         }
         stage('Merge Dev Branch with Main Branch ') {
             steps {
                  sh '''
+                 ls ./
                  git checkout main & git merge origin/dev;          
                      
                '''
