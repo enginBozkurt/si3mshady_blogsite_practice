@@ -16,7 +16,8 @@ pipeline {
         stage('Test') {
             steps {
                sh '''
-                 pwd 
+               npm build package.json && ls;
+                
                '''
             }
         }
